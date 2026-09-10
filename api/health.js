@@ -1,14 +1,9 @@
-/**
- * Vercel Serverless Function
- * 健康检查：/api/health
- */
-
+// 健康检查 API
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  
-  res.status(200).json({
+  res.json({
     status: 'ok',
-    message: '数据工厂运行中',
+    message: '数据工厂运行正常',
     timestamp: new Date().toISOString()
   });
 }
