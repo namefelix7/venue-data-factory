@@ -1,19 +1,12 @@
 /**
- * Vercel Serverless Function
- * API 入口：/api/activities
+ * API 入口
  */
-
 const fs = require('fs');
 const path = require('path');
 
-// 数据文件路径
-const DATA_FILE = path.join(process.cwd(), 'data', 'activities.json');
+const DATA_FILE = path.join(__dirname, '..', 'data', 'activities.json');
 
-/**
- * GET /api/activities - 获取所有活动
- */
 export default async function handler(req, res) {
-  // 允许跨域
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -24,7 +17,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 读取数据
     let activities = [];
     let lastUpdate = null;
 
