@@ -1,0 +1,31 @@
+// 示例数据格式（供参考）
+// 实际抓取后应该是类似这样的结构
+
+const SAMPLE_DATA = [
+  {
+    id: 'zm-001',
+    sourceCode: 'zm',
+    venueName: '浙江省博物馆',
+    title: '宋韵江南——馆藏宋版古籍与书画特展',
+    type: 'exhibition',
+    tags: ['特展', '宋代', '免费'],
+    desc: '汇集馆藏 120 余件宋版古籍善本与纸本水墨，呈现南宋江南文脉。',
+    address: '杭州市西湖区之江路 275 号（之江馆）',
+    startTime: '2026-07-14',
+    endTime: '2026-10-12',
+    timeLabel: '09:00-17:00',
+    price: '免费（需预约）',
+    bookable: true,
+    ticketing: {
+      releaseAt: '2026-07-17 09:00',
+      channel: '云上浙博小程序',
+      note: '每周五 09:00 放票，周末场次 10 分钟内即约满'
+    },
+    schedule: [
+      { date: '2026-07-19', time: '10:00' },
+      { date: '2026-07-20', time: '14:00' }
+    ]
+  }
+];
+
+module.exports = SAMPLE_DATA;
