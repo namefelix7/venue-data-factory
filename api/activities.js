@@ -4,7 +4,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_FILE = path.join(__dirname, '..', 'data', 'activities.json');
+// 数据文件路径（使用绝对路径）
+const DATA_FILE = path.resolve(__dirname, '..', 'data', 'activities.json');
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
