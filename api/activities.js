@@ -1,11 +1,10 @@
-// Vercel Serverless Function - activities API
-const fs = require('fs');
-const path = require('path');
+// Vercel Serverless Function - 直接返回数据
+// 注意：在 Vercel 中，我们直接内嵌数据，不读取外部文件
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'activities.json');
+const ACTIVITIES = []; // 数据放在这里，或从环境变量读取
 
 export default async function handler(req, res) {
-  // CORS headers
+  // CORS 允许跨域
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -15,24 +14,11 @@ export default async function handler(req, res) {
     return;
   }
 
-  try {
-    let activities = [];
-    let lastUpdate = null;
-
-    if (fs.existsSync(DATA_FILE)) {
-      const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-      activities = data;
-      lastUpdate = fs.statSync(DATA_FILE).mtime.toISOString();
-    }
-
-    res.json({
-      activities,
-      count: activities.length,
-      lastUpdate,
-      source: 'venue-data-factory'
-    });
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: error.message });
-  }
+  // 返回数据
+  res.json({
+    activities: ACTIVITIES,
+    count: ACTIVITIES.length,
+    lastUpdate: new Date().toISOString(),
+    source: 'venue-data-factory'
+  });
 }
